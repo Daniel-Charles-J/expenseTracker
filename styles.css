@@ -27,7 +27,8 @@ h3{
     border-bottom: 1px solid #bbb;
     padding-bottom: 5px;
     margin: 15px 0 10px;
-    /* align-content: left; */
+    align-content: left;
+    font-weight: 900;
 }
 h4{
     text-transform: uppercase;
