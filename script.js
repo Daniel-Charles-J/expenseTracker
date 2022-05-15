@@ -36,17 +36,37 @@ const addTransactionDom = function(transaction){
     <button class="delete-btn" onclick = "removeTransaction(${transaction.id})">x</button>`;
     list.appendChild(item);
 }
+const init = function(){
+    list.innerHTML = '';
+    transactions.forEach(addTransactionDom);
+    updatedValues();
+};
 const updateLocalStorage = function(){
     localStorage.setItem('transaction',JSON.stringify(transaction));
 }
 const removeTransaction = function(id){
     transaction = transactions.filter((transaction) => transaction.id !== id);
     updateLocalStorage();
+    init();
 };
 
 form.addEventListener('submit',function(e){
     e.preventDefault();
     if(transaction.value.trim() ==='' || amount.value.trim() === ''){
         alert('Please Enrter the values for two Fields');
+    };
+
+    const transactionDetails = {
+        id : Math.floor(Math.random() * 10000),
+        transaction : transaction.value,
+        amount : Number(amount.value),
     }
+    transactions.push(transactionDetails);
+    addTransactionDom(transactionDetails);
+    updatedValues();
+    updateLocalStorage();
+    transaction.value = '';
+    amount.value = '';
 });
+
+init();
