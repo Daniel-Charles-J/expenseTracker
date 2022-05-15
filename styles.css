@@ -92,10 +92,10 @@ input{
     margin: 10px 0;
     width: 320px;
 }
-.list li .plus{
+.list li.plus{
     border-right: 5px solid green;
 }
-.list li .minus{
+.list li.minus{
     border-right: 5px solid red;
 }
 .delete-btn{
