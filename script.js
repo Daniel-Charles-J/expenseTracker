@@ -11,7 +11,7 @@ const localStorageTransactions = JSON.parse(
     localStorage.getItem('transactions'),
 );
 
-const transactions = localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
+let transactions = localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
 
 //update values
 const updatedValues = function(){
@@ -45,10 +45,7 @@ const updateLocalStorage = function(){
     localStorage.setItem('transactions',JSON.stringify(transactions));
 }
 const removeTransaction = function(id){
-    console.log(id);
-    console.log(transactions);
     transactions = transactions.filter((transaction) => transaction.id !== id);
-    console.log(transactions);
     updateLocalStorage();
     init();
 };
