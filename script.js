@@ -54,19 +54,18 @@ form.addEventListener('submit',function(e){
     e.preventDefault();
     if(transaction.value.trim() ==='' || amount.value.trim() === ''){
         alert('Please Enrter the values for two Fields');
-    };
-
-    const transactionDetails = {
-        id : Math.floor(Math.random() * 10000),
-        transaction : transaction.value,
-        amount : Number(amount.value),
+    }else{
+        const transactionDetails = {
+            id : Math.floor(Math.random() * 10000),
+            transaction : transaction.value,
+            amount : Number(amount.value),
+        }
+        transactions.push(transactionDetails);
+        addTransactionDom(transactionDetails);
+        updatedValues();
+        updateLocalStorage();
+        transaction.value = '';
+        amount.value = '';
     }
-    transactions.push(transactionDetails);
-    addTransactionDom(transactionDetails);
-    updatedValues();
-    updateLocalStorage();
-    transaction.value = '';
-    amount.value = '';
 });
-
 init();
