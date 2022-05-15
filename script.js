@@ -42,10 +42,13 @@ const init = function(){
     updatedValues();
 };
 const updateLocalStorage = function(){
-    localStorage.setItem('transaction',JSON.stringify(transaction));
+    localStorage.setItem('transactions',JSON.stringify(transactions));
 }
 const removeTransaction = function(id){
-    transaction = transactions.filter((transaction) => transaction.id !== id);
+    console.log(id);
+    console.log(transactions);
+    transactions = transactions.filter((transaction) => transaction.id !== id);
+    console.log(transactions);
     updateLocalStorage();
     init();
 };
