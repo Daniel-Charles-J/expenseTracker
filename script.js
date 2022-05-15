@@ -36,7 +36,17 @@ const addTransactionDom = function(transaction){
     <button class="delete-btn" onclick = "removeTransaction(${transaction.id})">x</button>`;
     list.appendChild(item);
 }
-transactions.forEach((transaction) => addTransactionDom(transaction));
+const updateLocalStorage = function(){
+    localStorage.setItem('transaction',JSON.stringify(transaction));
+}
 const removeTransaction = function(id){
     transaction = transactions.filter((transaction) => transaction.id !== id);
+    updateLocalStorage();
 };
+
+form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(transaction.value.trim() ==='' || amount.value.trim() === ''){
+        alert('Please Enrter the values for two Fields');
+    }
+});
